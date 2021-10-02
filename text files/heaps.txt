@@ -1,0 +1,54 @@
+
+//top-down approch
+void heapify(int* array, int n)
+{
+	int i;
+	int j,k;
+	int data;
+	for(i = 1; i < n; ++i)
+	{
+		k = i;
+		j = (k - 1) / 2;
+		data = array[k];
+		while(array[j] < data && (k > 0))  // Sign change for mIn HEAP.
+		{
+			//swap(&array[i], &array[j]);
+			array[k] = array[j];
+			k = j;
+			j = (k - 1) / 2;
+		}
+		array[k] = data;
+	}
+}
+
+
+//bottum-up approach
+void heapify(int* array, int n)
+{
+	int i;
+	for(int i = n/2; i >= 1; --i)
+	{
+	int k;
+	int j;
+	k = i;
+	j = 2 * k;
+	int flag = 0;
+	while(j <= n && !flag)
+	{
+		if(j < n && array[j + 1] > array[j])
+		{
+			++j;
+		}
+		if(array[k] < array[j])
+		{
+			swap(&array[k], &array[j]);
+			k = j;
+			j = 2 * k;
+		}
+		else
+		{
+			flag = 1;
+		}
+	}
+        }
+}

@@ -1,0 +1,31 @@
+void heapify(int* array, int n)
+{
+	for(int i = n; i >= 1; --i)
+		heap(array,i);
+}
+
+void heap(int *array,int n)
+{
+	int i,j,k,heap,root,temp;
+	for(i=n/2;i>=1;i--)
+	{
+		k=i;
+		root=array[k];
+		heap=0;
+		while(2*i<=n && !heap)
+		{
+			j=2*i;
+			if(j<n)
+			if(array[j]<array[j++])
+			j++;
+			if(root>=array[j])
+			heap=1;
+			else
+			{
+			array[k]=array[j];
+			k=j;
+			array[k]=root;
+		    }
+		}
+	}
+}
